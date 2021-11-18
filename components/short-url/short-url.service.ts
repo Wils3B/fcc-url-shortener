@@ -8,6 +8,7 @@ const ShortUrlService = {
   async createShortUrl(originalUrl: string) {
     try {
       const q = new url.URL(originalUrl);
+      if (!originalUrl.startsWith(q.href)) throw new Error('invalid url');
       await util.promisify(dns.lookup)(q.hostname);
       return ShortUrlRepository.insert({ original_url: originalUrl, short_url: v4() });
     } catch (e) {
