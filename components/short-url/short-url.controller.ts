@@ -5,7 +5,7 @@ const ShortUrlController = {
   async createShortUrl(req: Request, res: Response) {
     try {
       console.log(req.body);
-      const url = await ShortUrlService.createShortUrl(req.body.original_url);
+      const url = await ShortUrlService.createShortUrl(req.body.url);
       res.json(url);
     } catch (e: any) {
       res.json({ error: e.message });

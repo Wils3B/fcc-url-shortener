@@ -5,7 +5,6 @@ import ShortUrlRepository from './short-url.repository';
 
 const ShortUrlService = {
   async createShortUrl(originalUrl: string) {
-    console.log(originalUrl);
     try {
       const response = await util.promisify(dns.lookup)(originalUrl);
       console.log(response);
